@@ -1,0 +1,32 @@
+{
+  "compilerOptions": {
+    "lib": [ "es6",
+      "dom" ],
+    "noImplicitAny": true,
+    "removeComments": true,
+    "preserveConstEnums": true,
+    "sourceMap": true,
+    "target": "esnext",
+    "module": "esnext",
+    "strict": true,
+    "jsx": "preserve",
+    "importHelpers": true,
+    "moduleResolution": "node",
+    "experimentalDecorators": true, // 启用装饰器（装饰器为实验功能）
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "baseUrl": "."
+  },
+  "include": [
+    "src/**/*",
+    "*.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "**/*.spec.ts"
+  ],
+  "experimentalDecorators": true, // 启用装饰器（装饰器为实验功能）
+  "esModuleInterop": true,
+  "allowSyntheticDefaultImports": true,
+  "allowJs": true  // 允许编译js
+}
