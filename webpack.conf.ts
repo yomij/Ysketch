@@ -1,10 +1,11 @@
-const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const webpack = require('webpack');
+import webpack from 'webpack';
+import path from 'path';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
+import { CleanWebpackPlugin } from 'clean-webpack-plugin';
 
-console.log(`${path.resolve(__dirname)}\\index.ts`)
-module.exports = {
+// const webpack = require('webpack');
+
+const config: webpack.Configuration = {
   entry: './index.ts',
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -58,3 +59,5 @@ module.exports = {
     extensions: ['.tsx', '.ts', '.js'],
   },
 };
+
+export default config;

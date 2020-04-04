@@ -1,21 +1,21 @@
 {
   "compilerOptions": {
-    "lib": [ "es6",
-      "dom" ],
+    "lib":[ "ES6", "DOM" ],
     "noImplicitAny": true,
     "removeComments": true,
     "preserveConstEnums": true,
     "sourceMap": true,
     "target": "esnext",
-    "module": "esnext",
+    "module": "commonjs", // node只支持commonjs
     "strict": true,
     "jsx": "preserve",
     "importHelpers": true,
     "moduleResolution": "node",
     "experimentalDecorators": true, // 启用装饰器（装饰器为实验功能）
-    "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
-    "baseUrl": "."
+    "esModuleInterop": true, // 支持使用import d from 'cjs'的方式引入commonjs包。
+    "allowSyntheticDefaultImports": true, // 允许从没有设置默认导出的模块中默认导入
+    "baseUrl": ".",
+    "allowJs": true  // 允许编译js
   },
   "include": [
     "src/**/*",
@@ -24,9 +24,5 @@
   "exclude": [
     "node_modules",
     "**/*.spec.ts"
-  ],
-  "experimentalDecorators": true, // 启用装饰器（装饰器为实验功能）
-  "esModuleInterop": true,
-  "allowSyntheticDefaultImports": true,
-  "allowJs": true  // 允许编译js
+  ]
 }
