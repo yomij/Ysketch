@@ -1,11 +1,11 @@
 export default class ImageLoader {
-  private src: string;
+  private readonly src: string;
 
-  private image: HTMLImageElement;
+  private readonly image: HTMLImageElement;
 
-  private width: number;
+  private readonly width: number;
 
-  private height: number;
+  private readonly height: number;
 
   private imageData: ImageData | undefined;
 

@@ -1,15 +1,17 @@
-const tpl  = require("./index.html");
-require('../../../css/example.scss')
-import { HTMLTemp } from '../../../types';
+import {HTMLTemp} from '../../../types';
+
+const tpl = require('./index.html');
+require('../../../css/example.scss');
 
 class layer implements HTMLTemp {
-    public readonly name: string;
-    public readonly tpl: string;
-    constructor (name: string) {
-        this.name = name
-        this.tpl = tpl
-    }
+  public readonly name: string;
+
+  public readonly tpl: string;
+
+  constructor(name: string) {
+    this.name = name;
+    this.tpl = tpl;
+  }
 }
 
 export default layer;
-
