@@ -3,19 +3,20 @@ export default class ImageLoader {
 
   private readonly image: HTMLImageElement;
 
-  private readonly width: number;
+  private readonly width: number; // 指定的图片宽
 
-  private readonly height: number;
+  private readonly height: number; // 指定的图片宽
+
+  private readonly density: number; // 筛选的密度指数，越大，约稀
 
   private imageData: ImageData | undefined;
 
-  constructor(src: string, width: number, height: number) {
-    console.log(src);
+  constructor(src: string, width: number, height: number, density: number) {
     this.src = src;
-    // eslint-disable-next-line no-undef
     this.image = new Image();
     this.width = width;
     this.height = height;
+    this.density = density;
     this.init().catch((e) => {
       console.log(e);
     });
@@ -40,7 +41,7 @@ export default class ImageLoader {
 
   getImageData(): ImageData {
     const canvas: HTMLCanvasElement = document.createElement('canvas');
-    const ctx: CanvasRenderingContext2D = canvas.getContext('2d') as CanvasRenderingContext2D;
+    const ctx: CanvasRenderingContext2D = canvas.getContext('2d')!;
     canvas.width = this.width;
     canvas.height = this.height;
     ctx.drawImage(this.image, 0, 0);

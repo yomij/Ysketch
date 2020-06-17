@@ -1,7 +1,7 @@
 import webpack from 'webpack';
 import path from 'path';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
-import { CleanWebpackPlugin } from 'clean-webpack-plugin';
+import {CleanWebpackPlugin} from 'clean-webpack-plugin';
 
 // const webpack = require('webpack');
 
@@ -16,6 +16,12 @@ const config: webpack.Configuration = {
     contentBase: './dist',
     open: true,
     port: 8088,
+  },
+  resolve: {
+    extensions: ['.tsx', '.ts', '.js'],
+    alias: {
+      '@types': path.resolve(__dirname, 'types'),
+    },
   },
   plugins: [
     new CleanWebpackPlugin(),
@@ -54,9 +60,6 @@ const config: webpack.Configuration = {
         loader: 'file-loader',
       },
     ],
-  },
-  resolve: {
-    extensions: ['.tsx', '.ts', '.js'],
   },
 };
 

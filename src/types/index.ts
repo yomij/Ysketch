@@ -13,3 +13,7 @@ export interface YRender {
 
   init(): YRender;
 }
+
+export interface Point {
+
+}
