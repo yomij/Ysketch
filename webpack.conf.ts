@@ -1,12 +1,12 @@
 import webpack from 'webpack';
 import path from 'path';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
-import {CleanWebpackPlugin} from 'clean-webpack-plugin';
+import { CleanWebpackPlugin } from 'clean-webpack-plugin';
 
 // const webpack = require('webpack');
 
 const config: webpack.Configuration = {
-  entry: './index.ts',
+  entry: './src/index.ts',
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'sketch-bundle.js',
@@ -58,6 +58,10 @@ const config: webpack.Configuration = {
       {
         test: /\.png|jpg$/,
         loader: 'file-loader',
+      },
+      {
+        test: /\.txt|vs|fs$/,
+        use: 'raw-loader',
       },
     ],
   },

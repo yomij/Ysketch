@@ -1,38 +1,41 @@
-export default class Points {
-  readonly DENSITY = 3;
+import * as THREE from 'three';
 
-  readonly imgData: ImageData;
-
-  readonly vertices: number[];
-
-  positions: Float32Array; // 坐标点数组 有值
-
-  colors: Float32Array; //
-
+type PointParams = {
+  positions: Float32Array;
+  colors: Float32Array;
   opacities: Float32Array;
-
   sizes: Float32Array;
+  vertexShader: string;
+  fragmentShader: string;
+  texture: THREE.Texture;
+}
 
-  constructor(imgData: ImageData) {
-    this.imgData = imgData;
-    this.vertices = this.getVertices();
-    this.positions = new Float32Array(this.vertices);
-    this.colors = new Float32Array(this.vertices.length);
-    this.opacities = new Float32Array(this.vertices.length / 3);
-    this.sizes = new Float32Array(this.vertices.length / 3);
+export default class Points {
+  readonly pointObj: THREE.Points;
+
+  readonly material!: THREE.ShaderMaterial;
+
+  readonly geometry: THREE.BufferGeometry = new THREE.BufferGeometry();
+
+  constructor(pointParams: PointParams) {
+    // this.material = new THREE.ShaderMaterial({
+    //   uniforms: {
+    //     pointTexture: { value: pointParams.texture },
+    //   },
+    //   vertexShader: pointParams.vertexShader,
+    //   fragmentShader: pointParams.fragmentShader,
+    //   transparent: true,
+    //   depthWrite: false,
+    //   blending: THREE.NormalBlending,
+    // });
+    this.geometry.setAttribute('position', new THREE.BufferAttribute(pointParams.positions, 3));
+    this.geometry.setAttribute('pointSize', new THREE.BufferAttribute(pointParams.sizes, 1));
+    this.geometry.setAttribute('pointColor', new THREE.BufferAttribute(pointParams.colors, 3));
+    this.geometry.setAttribute('pointOpacity', new THREE.BufferAttribute(pointParams.opacities, 1));
+    this.pointObj = new THREE.Points(
+      this.geometry,
+      new THREE.PointsMaterial({ color: 0xff0000 }),
+    );
+    console.log(pointParams);
   }
-
-  getVertices(): number[] {
-    const points = [];
-    const {data, width, height} = this.imgData;
-    for (let x = 0; x < width / this.DENSITY; x += 1) {
-      for (let y = 0; y < height / this.DENSITY; y += 1) {
-        if (data[(x * this.DENSITY + y * width)] > 200) {
-          points.push(0, width / 2 - x, height / 2 - y);
-        }
-      }
-    }
-    return points;
-  }
-
 }

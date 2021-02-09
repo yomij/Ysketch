@@ -10,10 +10,6 @@ export interface TempOption {
 
 export interface YRender {
   readonly canvas: HTMLElement;
-
-  init(): YRender;
-}
-
-export interface Point {
-
+  render(): YRender;
+  init(): any;
 }

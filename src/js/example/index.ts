@@ -1,7 +1,7 @@
 import * as THREE from 'three';
-import {YRender} from '../../types';
+import { YRender } from '../../types';
 
-export default class ExampleRender implements YRender {
+export default class ExampleRender {
   readonly canvas: HTMLCanvasElement;
 
   readonly renderer: THREE.WebGLRenderer;
@@ -45,7 +45,7 @@ export default class ExampleRender implements YRender {
 
     // create the ground plane
     const planeGeometry = new THREE.PlaneGeometry(60, 20, 1, 1);
-    const planeMaterial = new THREE.MeshLambertMaterial({color: 0xffffff});
+    const planeMaterial = new THREE.MeshLambertMaterial({ color: 0xffffff });
     const plane = new THREE.Mesh(planeGeometry, planeMaterial);
     plane.receiveShadow = true;
 
@@ -60,7 +60,7 @@ export default class ExampleRender implements YRender {
 
     // create a cube
     const cubeGeometry = new THREE.BoxGeometry(4, 4, 4);
-    const cubeMaterial = new THREE.MeshLambertMaterial({color: 0xff0000});
+    const cubeMaterial = new THREE.MeshLambertMaterial({ color: 0xff0000 });
     const cube = new THREE.Mesh(cubeGeometry, cubeMaterial);
     cube.castShadow = true;
 
@@ -73,7 +73,7 @@ export default class ExampleRender implements YRender {
     this.scene.add(cube);
 
     const sphereGeometry = new THREE.SphereGeometry(4, 20, 20);
-    const sphereMaterial = new THREE.MeshLambertMaterial({color: 0x7777ff});
+    const sphereMaterial = new THREE.MeshLambertMaterial({ color: 0x7777ff });
     const sphere = new THREE.Mesh(sphereGeometry, sphereMaterial);
 
     // position the sphere

@@ -1,7 +1,7 @@
 // import * as THREE from 'three';
-import Example from './src/html/pages/example/index';
-import {HTMLTemp, TempOption} from './src/types';
-import ExampleRender from './src/js/image_particle';
+import Example from './html/pages/example';
+import { HTMLTemp, TempOption } from './types';
+import ImageDataRender from './js/image_particle';
 
 class App {
   private readonly dom: HTMLElement | null;
@@ -18,9 +18,9 @@ class App {
 
 // eslint-disable-next-line no-new
 new App({
-  el: 'add',
+  el: 'app',
   name: 'app',
 });
 
-const e = new ExampleRender('ex');
-e.init();
+const e = new ImageDataRender('ex');
+e.init()
