@@ -10,7 +10,7 @@
 
 1. **用Canvas读取图片像素，并对像素点进行筛选。筛选可根据RGB色值进行筛选，并进行疏密度控制。进行点位的初始,图片位置如下:**
 
-   <img src="E:\project\Ysketch\_doc\ImagePosition.png" style="zoom:50%;" />
+   <img src="ImagePosition.png" style="zoom:50%;" />
 
    ```typescript
    // 读取像素
@@ -48,7 +48,7 @@
 
    + 定义Texture，长得这个样子：
 
-     <img src="E:\project\Ysketch\_doc\Texture.png" style="zoom:50%;" />
+     <img src="Texture.png" style="zoom:50%;" />
 
      ```typescript
      function circularGradient(radius: number): THREE.Texture {
