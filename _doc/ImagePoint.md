@@ -30,7 +30,7 @@
                // 处理图片位置(x, y, z)
                points.push(0, height / 2 - y * density, width / 2 - x * density);
        	}
-   	}
+       }
    }
    
    ```
