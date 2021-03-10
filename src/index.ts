@@ -1,26 +1,36 @@
 // import * as THREE from 'three';
-import Example from './html/pages/example';
-import { HTMLTemp, TempOption } from './types';
-import ImageDataRender from './js/image_particle';
+import ImagePointPage from './html/pages/imagePoint';
+import {HTMLTemp, TempOption} from './types';
+import ImageDataRender from './js/image_point';
 
 class App {
   private readonly dom: HTMLElement | null;
 
-  private layer: HTMLTemp;
-
   constructor(option: TempOption) {
     this.dom = window.document.getElementById(option.el);
-    this.layer = new Example(option.name);
-    // eslint-disable-next-line no-new,no-unused-expressions
-    this.dom && (this.dom.innerHTML = this.layer.tpl);
+  }
+
+  replace(layer: HTMLTemp): HTMLCanvasElement {
+    if (!this.dom) throw Error('Dom No Find');
+    this.dom.innerHTML = layer.tpl;
+    return this.dom.querySelector('canvas') as HTMLCanvasElement;
   }
 }
 
-// eslint-disable-next-line no-new
-new App({
+const app = new App({
   el: 'app',
   name: 'app',
 });
 
-const e = new ImageDataRender('ex');
-e.init()
+const canvas = app.replace(new ImagePointPage('ImagePointPage'));
+
+const image = require('./static/test.jpg').default;
+
+const e = new ImageDataRender(canvas, {
+  imgUrl: image,
+  width: 500,
+  height: 375,
+  colorFilter: (r: number): boolean => (r > 200),
+});
+
+e.init();

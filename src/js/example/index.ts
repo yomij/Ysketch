@@ -1,5 +1,4 @@
 import * as THREE from 'three';
-import { YRender } from '../../types';
 
 export default class ExampleRender {
   readonly canvas: HTMLCanvasElement;
